@@ -12,7 +12,6 @@ Pour limiter la consommation de tokens :
 - **Étape 5 (rapport HTML) : NE PAS générer** sauf si l'utilisateur le demande explicitement.
 - **Étape 6** : pas de fichier séparé ; si le dépôt a un dossier `architecture/`, y écrire une fiche courte (résumé des 5 avis + relecture + verdict) et l'ajouter à l'historique.
 - Réponse finale à l'utilisateur en français, concise : avis en 1 ligne chacun, ce que la relecture a ajouté, verdict, première action.
-- Pour une question moyennement importante, propose plutôt une « version rapide » : toi seul tu joues les 5 rôles en un message (0 sous-agent).
 
 
 # LLM Council
