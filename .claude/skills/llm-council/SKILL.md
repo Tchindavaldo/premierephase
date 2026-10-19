@@ -1,7 +1,19 @@
 ---
 name: llm-council
-description: "Run any question, idea, or decision through a council of 5 AI advisors who independently analyze it, peer-review each other anonymously, and synthesize a final verdict. Based on Karpathy's LLM Council methodology. MANDATORY TRIGGERS: 'council this', 'run the council', 'war room this', 'pressure-test this', 'stress-test this', 'debate this'. STRONG TRIGGERS (use when combined with a real decision or tradeoff): 'should I X or Y', 'which option', 'what would you do', 'is this the right move', 'validate this', 'get multiple perspectives', 'I can't decide', 'I'm torn between'. Do NOT trigger on simple yes/no questions, factual lookups, or casual 'should I' without a meaningful tradeoff (e.g. 'should I use markdown' is not a council question). DO trigger when the user presents a genuine decision with stakes, multiple options, and context that suggests they want it pressure-tested from multiple angles."
+description: "Conseil de 5 conseillers IA (Contradicteur, Premiers principes, Expansionniste, Œil extérieur, Exécutant) + relecture anonyme + verdict d'un président, pour obtenir un avis OBJECTIF et non complaisant. DÉCLENCHER AUTOMATIQUEMENT, sans que l'utilisateur le demande, dès qu'il présente une idée de business, un projet à lancer, une offre ou un prix à fixer, un choix entre options, un pivot, une stratégie, ou qu'il demande un avis, « est-ce une bonne idée », « tu en penses quoi », « je dois faire X ou Y », « je lance… », « je veux vendre… ». Déclencheurs explicites aussi : 'council this', 'conseil', 'stress-test', 'challenge mon idée', 'avis objectif'. NE PAS déclencher pour : questions factuelles, tâches techniques (coder, corriger, installer), création de contenu, résumés, ou petites décisions sans enjeu."
 ---
+
+## MODE ÉCONOMIE (prioritaire sur le reste de ce fichier)
+Pour limiter la consommation de tokens :
+- **Annonce d'abord en une ligne** : « Je lance le conseil (6 agents) sur : <question> ». Si l'utilisateur répond non/stop, réponds normalement.
+- **Étape 2** : 5 conseillers en parallèle, chacun **100–200 mots**, en français, sans outils.
+- **Étape 3** : UNE SEULE relecture anonymisée (1 sous-agent qui lit les 5 réponses A–E et répond aux 3 questions, < 250 mots) au lieu de 5.
+- **Étape 4** : le président, c'est toi (pas de sous-agent supplémentaire).
+- **Étape 5 (rapport HTML) : NE PAS générer** sauf si l'utilisateur le demande explicitement.
+- **Étape 6** : pas de fichier séparé ; si le dépôt a un dossier `architecture/`, y écrire une fiche courte (résumé des 5 avis + relecture + verdict) et l'ajouter à l'historique.
+- Réponse finale à l'utilisateur en français, concise : avis en 1 ligne chacun, ce que la relecture a ajouté, verdict, première action.
+- Pour une question moyennement importante, propose plutôt une « version rapide » : toi seul tu joues les 5 rôles en un message (0 sous-agent).
+
 
 # LLM Council
 
